@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-TIMEOUT = 5
+TIMEOUT = 30
 NOT_FOUND_ELEMENT = 'N/A'
 
 
@@ -42,8 +42,8 @@ def extract_movie_data_main_page_version(movie, movies_data_dict):
         print('no movie year found')
         movie_year = NOT_FOUND_ELEMENT
     try:
-        movie_storyline = WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.CSS_SELECTOR,
-                                                                                                '#__next > main > div > section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO > div > section > div > div.TitleMainBelowTheFoldGroup__TitleMainPrimaryGroup-sc-1vpywau-1.btXiqv.ipc-page-grid__item.ipc-page-grid__item--span-2 > section:nth-child(10) > div.Storyline__StorylineWrapper-sc-1b58ttw-0.iywpty > div.ipc-overflowText.ipc-overflowText--pageSection.ipc-overflowText--height-long.ipc-overflowText--long.ipc-overflowText--base > div.ipc-html-content.ipc-html-content--base > div')))
+        movie_storyline = WebDriverWait(browser, TIMEOUT).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[class*='Storyline'] .ipc-html-content > div"))).text
     except NoSuchElementException:
         print('no movie storyline found')
         movie_storyline = NOT_FOUND_ELEMENT
@@ -55,9 +55,14 @@ def extract_movie_data_main_page_version(movie, movies_data_dict):
         print('no movie genres found')
         movie_genres_list = NOT_FOUND_ELEMENT
     try:
-        movie_trailer = browser.find_element_by_css_selector(
+        movie_trailer_link = browser.find_element_by_css_selector(
             '#__next > main > div > section.ipc-page-background.ipc-page-background--base.TitlePage__StyledPageBackground-wzlr49-0.dDUGgO > section > div:nth-child(4) > section > section > div.Hero__MediaContentContainer__Video-kvkd64-2.kmTkgc > div.Hero__MediaContainer__Video-kvkd64-3.FKYGY > div > div.Media__SlateContainer-sc-1x98dcb-2.hQJhqT > div.ipc-slate.ipc-slate--baseAlt.ipc-slate--dynamic-width.Slate__SlateContainer-ss6ccs-1.gQRPwy.ipc-sub-grid-item.ipc-sub-grid-item--span-4 > a').get_attribute(
             'href')
+        browser.get(movie_trailer_link)
+        time.sleep(2)
+        movie_trailer = browser.find_element_by_css_selector(
+            '#imdb-jw-video-1 > div.jw-media.jw-reset > video').get_attribute('src')
+        browser.back()
     except NoSuchElementException:
         print('no movie trailer found')
         movie_trailer = NOT_FOUND_ELEMENT
@@ -100,9 +105,12 @@ def extract_movie_data_second_page_version(movie, movies_data_dict):
         print('no movie genres found')
         movie_genres_list = NOT_FOUND_ELEMENT
     try:
-        movie_trailer = browser.find_element_by_css_selector(
+        movie_trailer_link = browser.find_element_by_css_selector(
             '#title-overview-widget > div.vital > div.slate_wrapper > div.videoPreview.videoPreview--autoPlaybackOnce > div.videoPreview__videoContainer > a').get_attribute(
             'href')
+        browser.get(movie_trailer_link)
+        movie_trailer = browser.find_element_by_css_selector(
+            '#imdb-jw-video-1 > div.jw-media.jw-reset > video').get_attribute('src')
     except NoSuchElementException:
         print('no movie trailer found')
         movie_trailer = NOT_FOUND_ELEMENT
@@ -169,7 +177,7 @@ def connect_to_the_browser():
     options.headless = True
     global browser
     browser = webdriver.Chrome(
-        executable_path=r"C:\Users\DELL\Desktop\Python\pycharm files\ChromeDriver\chromedriver.exe",
+        executable_path=r"C:\Users\DELL\Desktop\Python\pycharm files - backup\ChromeDriver\chromedriver.exe",
         options=options)
     browser.get("https://www.imdb.com/?ref_=nv_home")
     time.sleep(3)

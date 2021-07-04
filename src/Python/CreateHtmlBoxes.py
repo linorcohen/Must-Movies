@@ -1,5 +1,4 @@
 import csv
-import pandas as pd
 
 
 def read_csv_file(csv_file):
@@ -23,21 +22,11 @@ def read_csv_file(csv_file):
                         </div>
                     """
                 html_text += html_box
-            with open('html_text.txt','w') as txt_to_write:
+            with open('html_text.txt', 'w') as txt_to_write:
                 txt_to_write.write(html_text)
                 txt_to_write.close()
                 read_file.close()
 
 
-# def read_csv_file_pandas(file):
-#     df = pd.read_csv(file)
-#     df_needed = df["movie_title", "movie_image"]
-#     for row in df_needed:
-#         print(row[0], row[1])
-
-
-
-
 if __name__ == '__main__':
     read_csv_file("moviesListData.csv")
-    # read_csv_file_pandas("moviesListData.csv")
