@@ -16,7 +16,7 @@ def read_csv_file(csv_file):
                                 </div>
                                 <div class="movie_back">
                                     <h4 class="movie_title">{row[1]}</h4>
-                                    <button class="movie_button">Information</button>
+                                    <button class="movie_button"><a href="../PagesHTML/MoviePages/{((row[0]).replace(' ', '').replace(':', '').replace('-', ''))}Page.html" target="_blank">See More</a></button>
                                 </div>
                             </div>
                         </div>

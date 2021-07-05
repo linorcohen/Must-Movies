@@ -265,6 +265,15 @@ body {
 
 }
 
+.movie_button a {
+    text-decoration: none;
+    color: #f4f1de;
+}
+
+.movie_button a:visited {
+    color: #f4f1de;
+}
+
 
 .movie_button:hover {
     background: #0096c7;
