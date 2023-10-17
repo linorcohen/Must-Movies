@@ -1,6 +1,6 @@
 # must-movies
 
-## Movies you have to watch
+## Movies you must to watch
 
 ### Features:
 - Responsive webstite
