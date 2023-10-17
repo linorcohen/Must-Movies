@@ -1,12 +1,16 @@
 body {
     font-family: 'Bebas Neue', cursive;
-    /*background-image: url('https://images3.alphacoders.com/592/thumb-1920-592105.jpg');*/
     color: #ffffff;
     padding: 0;
     margin: 0;
     height: 100%;
     position: absolute;
     z-index: -1;
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 ::-webkit-scrollbar {
@@ -89,12 +93,16 @@ body {
     flex-direction: column;
     align-items: flex-end;
     margin-top: 0;
-    padding: 0 100px 0 0;
+    padding: 10% 5% 5% 0;
     z-index: 2;
 }
 
 .video_box {
     background: none;
+}
+
+.video_box iframe {
+    border: none;
 }
 
 .info_container {
@@ -154,7 +162,6 @@ body {
     font-size: 22px;
     font-weight: 200;
     letter-spacing: 1px;
-
 }
 
 .genre:hover {
