@@ -242,9 +242,9 @@ body {
 }
 
 .movie_button {
-    margin: 20px 0 60px 40px;
+    margin: 3% 0 20% 11%;
     width: 32%;
-    height: 7%;
+    height: 9%;
     color: #f4f1de;
     border: none;
     cursor: pointer;
