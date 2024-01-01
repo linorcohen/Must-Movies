@@ -15,14 +15,15 @@ body {
 }
 
 .nav-header {
-    margin: 0;
+
     width: 100%;
     top: 0;
     overflow: hidden;
     position: fixed;
     z-index: 1;
     transition: all 1s;
-    height: 120px;
+    height: 15%; /* Changed from 120px */
+    font-size: 250%;
 }
 
 .nav-item {
@@ -32,20 +33,18 @@ body {
 
 
 #page_logo {
-    width: 300px;
-    height: 150px;
+    width: 15%; /* Changed from 300px */
+    height: 100%; /* Changed from 150px */
     object-fit: cover;
     float: left;
-    object-position: 50% 100%;
 }
 
 .nav-header ul {
-    margin: 50px auto 30px auto;
+    margin: 3% auto 3% auto;
     text-align: right;
 }
 
 .nav-header ul li {
-    font-size: 18px;
     padding: 20px 20px 0 20px;
     letter-spacing: 3px;
 
@@ -62,7 +61,7 @@ body {
 }
 
 #contact {
-    padding-right: 480px;
+    padding-right: 25%;
 }
 
 .head_container {
@@ -71,7 +70,7 @@ body {
 
 #head_image {
     width: 100%;
-    height: 780px;
+    height: 100%;
     object-fit: cover;
     object-position: 0 0;
 
@@ -79,15 +78,17 @@ body {
 
 .head_text_container {
     position: absolute;
-    top: 250px;
-    left: 350px;
+    top: 40%;
+    left:20%;
     color: #f2cc8f;
+    font-size: 300%;
+    width: 30%;
+    height: 50%;
 }
 
 .head_text_container h1 {
-    font-size: 48px;
     letter-spacing: 10px;
-    line-height: 65px;
+    line-height: 70%;
 }
 
 .head_text_container h4 {
@@ -95,16 +96,16 @@ body {
     Segoe UI, Roboto, Helvetica Neue, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol;
-    font-size: 24px;
+
     font-weight: 60;
-    line-height: 40px;
+    line-height: 150%;
 }
 
-/*Author: Kocsten*/
+
 #scroll_down_button {
-    width: 200px;
-    height: 50px;
-    border: 1px solid;
+    width: 50%;
+    height: 13%;
+    border: 3px solid;
     color: #f4f1de;
     background: #111;
     cursor: pointer;
@@ -114,7 +115,7 @@ body {
     animation-name: gradually;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-
+    font-size: 60%;
 }
 
 #scroll_down_button a {
@@ -233,8 +234,8 @@ body {
 }
 
 .movie_title {
-    font-size: 22px;
-    margin: 50px 20px 10px 0;
+    font-size: 250%;
+    margin: 10% 10% 10% 10%;
     padding: 0 20px 0 30px;
     letter-spacing: 1px;
     width: 80%;
@@ -242,7 +243,7 @@ body {
 }
 
 .movie_button {
-    margin: 3% 0 20% 11%;
+    margin: 0 0 20% 15%;
     width: 32%;
     height: 9%;
     color: #f4f1de;
@@ -250,7 +251,7 @@ body {
     cursor: pointer;
     background: #00b4d8;
     transition: .3s ease;
-    font-size: 14px;
+    font-size: 180%;
     border-radius: 3px;
 
 }
@@ -273,10 +274,10 @@ body {
 
 
 footer {
-    margin-top: 80px;
+    margin-top: 5%;
     background-image: url("assets/background.gif");
     width: 100%;
-    height: 400px;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -289,6 +290,7 @@ footer {
     align-items: stretch;
     justify-content: center;
     color: #ffffff;
+
 }
 
 .footer-item {
@@ -301,6 +303,7 @@ footer {
     sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol;
     color: #d9cfb8;
+    margin-bottom: 5%;
 }
 
 .icons {
@@ -328,11 +331,11 @@ footer {
 
 .attribute {
 
-    font-size: 14px;
+    font-size: 100%;
 }
 
 .footer-heading {
-    font-size: 20px;
+    font-size: 180%;
     font-weight: 400;
     margin-top: 70px;
     color: #f2cc8f;
@@ -348,12 +351,12 @@ footer {
     Segoe UI, Roboto, Helvetica Neue, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     line-height: 40px;
-    font-size: 18px;
+    font-size: 180%;
 }
 
 .contact-info {
-    line-height: 15px;
-    font-size: 18px;
+    line-height: 100%;
+    font-size: 180%;
     margin-top: 20px;
 }
 
@@ -365,6 +368,5 @@ footer {
 .attribute a:hover {
     color: #892b46;
 }
-
 
 
