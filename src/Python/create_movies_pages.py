@@ -5,7 +5,9 @@ import time
 
 def read_csv_files(csv_file_data, csv_file_wallpaper):
     """
-    This function reads the csv files and creates the html pages for each movie.
+    This function reads the data from the csv files and creates the html pages for the movies.
+    :param csv_file_data: The csv file containing the data of the movies.
+    :param csv_file_wallpaper: The csv file containing the wallpaper links of the movies.
     """
     read_file_data = open(csv_file_data, 'r')
     read_file_wallpaper = open(csv_file_wallpaper, 'r')

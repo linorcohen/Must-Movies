@@ -10,7 +10,7 @@ NOT_FOUND_ELEMENT = 'N/A'
 
 def connect_to_the_browser():
     """
-    connect to the browser
+    connect to the browser and open the website
     """
     options = Options()
     options.headless = True
@@ -24,7 +24,7 @@ def connect_to_the_browser():
 
 def wallpaper_scraper():
     """
-    scrap the wallpaper of the movies
+    find the movie wallpaper in the website and create csv file with the movies wallpaper
     """
     connect_to_the_browser()
     movies_wallpaper_dict = {}
@@ -48,7 +48,7 @@ def wallpaper_scraper():
 
 def movie_search(movie):
     """
-    find the movie in the website
+    find the movie in the website search bar
     """
     search_key = browser.find_element_by_css_selector('#search')
     search_key.send_keys(movie)
@@ -60,7 +60,7 @@ def movie_search(movie):
 
 def create_csv_file_movie_wallpaper(movies_data_dict):
     """
-    create csv file with the movies wallpaper
+    create csv file with the movies wallpaper data
     """
     movies_df = pd.DataFrame.from_dict(movies_data_dict, orient='index', columns=['movie wallpaper'])
     movies_df.to_csv('moviesListWallpaper.csv')

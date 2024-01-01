@@ -36,6 +36,9 @@
 
     </div>
     <script>
+        // the script makes the navigation bar hide when scrolling down past 20 pixels,
+        // reappear when scrolling up or when the scroll position is at the very top,
+        // and change its background color based on the scroll position relative to 621 pixels.
         window.onscroll = scrollShowNav;
         let prevScrollTop = document.documentElement.scrollTop;
 

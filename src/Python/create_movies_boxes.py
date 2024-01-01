@@ -3,7 +3,9 @@ import csv
 
 def read_csv_file(csv_file):
     """
-    This function reads the csv file and creates the html boxes for the movies
+    This function reads the csv file and creates the html boxes for the movies.
+    :param csv_file: The csv file that contains the movies' data.
+    :return: None
     """
     with open(csv_file, 'r') as read_file:
         reader = csv.reader(read_file)
@@ -27,6 +29,7 @@ def read_csv_file(csv_file):
                         </div>
                     """
                 html_text += html_box
+            # write the html text to a single file
             with open('html_text.txt', 'w') as txt_to_write:
                 txt_to_write.write(html_text)
                 txt_to_write.close()
