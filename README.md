@@ -33,5 +33,5 @@ These scripts are used to generate the website's content, once.
 
 ## Setup
 1. Clone the repository.
-2. Open the `MainPage.html` file in your browser.
+2. Open the `src/Main/MainPage.html` file in your browser.
 3. Enjoy!
