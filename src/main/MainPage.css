@@ -79,16 +79,14 @@ body {
 .head_text_container {
     position: absolute;
     top: 40%;
-    left:20%;
+    left: 20%;
     color: #f2cc8f;
-    font-size: 300%;
-    width: 30%;
-    height: 50%;
+    font-size: 30px;
+    width: 500px;
 }
 
 .head_text_container h1 {
     letter-spacing: 10px;
-    line-height: 70%;
 }
 
 .head_text_container h4 {
