@@ -15,7 +15,6 @@ body {
 }
 
 .nav-header {
-
     width: 100%;
     top: 0;
     overflow: hidden;
@@ -28,7 +27,6 @@ body {
 
 .nav-item {
     display: inline;
-
 }
 
 
@@ -73,7 +71,6 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: 0 0;
-
 }
 
 .head_text_container {
@@ -81,8 +78,8 @@ body {
     top: 40%;
     left: 20%;
     color: #f2cc8f;
-    font-size: 30px;
-    width: 500px;
+    font-size: 300%;
+    height: 50%;
 }
 
 .head_text_container h1 {
@@ -96,13 +93,13 @@ body {
     Segoe UI Symbol;
 
     font-weight: 60;
-    line-height: 150%;
+    margin-bottom: 40px;
 }
 
 
 #scroll_down_button {
-    width: 50%;
-    height: 13%;
+    width: 400px;
+    height: 100px;
     border: 3px solid;
     color: #f4f1de;
     background: #111;
@@ -251,9 +248,8 @@ body {
     cursor: pointer;
     background: #00b4d8;
     transition: .3s ease;
-    font-size: 180%;
     border-radius: 3px;
-
+    font-size: 180%;
 }
 
 .movie_button a {
@@ -314,7 +310,7 @@ footer {
 }
 
 .icons a {
-    width: 5%;
+    width: 7%;
     margin: auto 5px;
 }
 
@@ -325,8 +321,7 @@ footer {
 }
 
 .footer-logo {
-    width: 55%;
-
+    width: 50%;
 }
 
 .attribute {
@@ -339,24 +334,24 @@ footer {
     margin-top: 70px;
     color: #f2cc8f;
     opacity: .3;
+    margin-bottom: 10%;
 }
 
 
 .footer-paragraph {
     padding-left: 25px;
     padding-right: 25px;
-    margin-top: 0;
     font-family: -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Helvetica Neue, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    line-height: 40px;
-    font-size: 180%;
+    font-size: 30px;
+
+
 }
 
 .contact-info {
-    line-height: 100%;
     font-size: 180%;
-    margin-top: 20px;
+
 }
 
 .attribute a {
