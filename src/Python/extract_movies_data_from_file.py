@@ -11,6 +11,8 @@ TIMEOUT = 30
 NOT_FOUND_ELEMENT = 'N/A'
 
 
+# DOES NOT WORK WITH THE CURRENT CHROME DRIVER
+
 def imdb_scraper():
     """
     connect IMDB website
@@ -217,7 +219,7 @@ def create_csv_file_movie_data(movies_data_dict):
     movies_df = pd.DataFrame.from_dict(movies_data_dict, orient='index',
                                        columns=['movie title', 'movie year', 'movie storyline',
                                                 'movie genres list', 'movie trailer', 'movie image'])
-    movies_df.to_csv('moviesListData.csv')
+    movies_df.to_csv('moviesListData_test.csv')
 
 
 if __name__ == '__main__':

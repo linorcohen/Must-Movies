@@ -4,9 +4,11 @@ import time
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 NOT_FOUND_ELEMENT = 'N/A'
 
+# DOES NOT WORK WITH THE CURRENT CHROME DRIVER
 
 def connect_to_the_browser():
     """
@@ -15,9 +17,7 @@ def connect_to_the_browser():
     options = Options()
     options.headless = True
     global browser
-    browser = webdriver.Chrome(
-        executable_path=r"C:\Users\DELL\Desktop\Python\pycharm files - backup\ChromeDriver\chromedriver.exe",
-        options=options)
+    browser = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     browser.get("https://wall.alphacoders.com/by_collection.php?id=175")
     time.sleep(3)
 
@@ -63,7 +63,8 @@ def create_csv_file_movie_wallpaper(movies_data_dict):
     create csv file with the movies wallpaper data
     """
     movies_df = pd.DataFrame.from_dict(movies_data_dict, orient='index', columns=['movie wallpaper'])
-    movies_df.to_csv('moviesListWallpaper.csv')
+    # movies_df.to_csv('moviesListWallpaper.csv')
+    movies_df.to_csv('moviesListWallpaper_Test.csv')
 
 
 if __name__ == '__main__':
