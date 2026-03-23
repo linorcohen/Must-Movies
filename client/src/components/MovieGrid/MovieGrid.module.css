@@ -53,21 +53,26 @@
 .carouselContainer {
   position: relative;
   z-index: 1;
-  padding: 1rem 0 3rem;
+  padding: 2rem 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
 }
 
-.genreSection {
-  margin-bottom: 3rem;
+.singleRow {
+  width: 100%;
   padding: 0 4%;
 }
 
-.genreTitle {
+.mainTitle {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   color: var(--color-gold);
-  margin: 0 0 1rem 0;
-  letter-spacing: 2px;
+  margin: 0 0 2rem 0;
+  letter-spacing: 3px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .rowWrapper {
@@ -155,13 +160,13 @@
     background-attachment: scroll;
   }
 
-  .genreSection {
+  .singleRow {
     padding: 0 2%;
-    margin-bottom: 2rem;
   }
 
-  .genreTitle {
-    font-size: 1.3rem;
+  .mainTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 
   .movieCard {
@@ -181,6 +186,10 @@
   .filterBar {
     padding: 1.5rem 2% 1rem;
   }
+
+  .carouselContainer {
+    min-height: 60vh;
+  }
 }
 
 @media (max-width: 480px) {
@@ -188,8 +197,9 @@
     width: 140px;
   }
 
-  .genreTitle {
-    font-size: 1.1rem;
+  .mainTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .scrollButton {

@@ -36,7 +36,10 @@ export function MainPage() {
 
   return (
     <>
-      <Navbar onLogoClick={showGrid ? handleBackToHero : undefined} />
+      <Navbar 
+        onLogoClick={showGrid ? handleBackToHero : undefined}
+        alwaysSolid={showGrid}
+      />
       <div className={styles.container}>
         <div className={styles.viewContainer}>
           {/* Hero View */}

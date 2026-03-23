@@ -8,16 +8,22 @@ const NAV_BG_THRESHOLD = 500;
 
 interface NavbarProps {
   onLogoClick?: () => void;
+  alwaysSolid?: boolean;
 }
 
-export function Navbar({ onLogoClick }: NavbarProps) {
+export function Navbar({ onLogoClick, alwaysSolid = false }: NavbarProps) {
   const [hidden, setHidden] = useState(false);
-  const [solid, setSolid] = useState(false);
+  const [solid, setSolid] = useState(alwaysSolid);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const prevScroll = useRef(0);
 
   useEffect(() => {
+    if (alwaysSolid) {
+      setSolid(true);
+      return;
+    }
+    
     function onScroll() {
       const current = window.scrollY;
       setHidden(current > NAV_HIDE_THRESHOLD && current > prevScroll.current);
@@ -26,7 +32,7 @@ export function Navbar({ onLogoClick }: NavbarProps) {
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [alwaysSolid]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (onLogoClick) {
