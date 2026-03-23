@@ -5,10 +5,9 @@ import styles from "./MovieGrid.module.css";
 
 interface MovieGridProps {
   movies: Movie[];
-  isSticky?: boolean;
 }
 
-export function MovieGrid({ movies, isSticky = false }: MovieGridProps) {
+export function MovieGrid({ movies }: MovieGridProps) {
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState("");
 
@@ -29,7 +28,7 @@ export function MovieGrid({ movies, isSticky = false }: MovieGridProps) {
 
   return (
     <>
-      <div className={`${styles.filterBar} ${isSticky ? styles.stickyFilterBar : ""}`}>
+      <div className={styles.filterBar}>
         <input
           type="text"
           placeholder="Search movies..."
