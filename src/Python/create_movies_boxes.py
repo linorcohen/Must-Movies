@@ -1,40 +1,43 @@
 import csv
+import os
+
+OUTPUT_FILE = "html_text.txt"
 
 
-def read_csv_file(csv_file):
+def generate_movie_boxes_html(csv_file):
     """
-    This function reads the csv file and creates the html boxes for the movies.
-    :param csv_file: The csv file that contains the movies' data.
-    :return: None
+    Reads the movie data CSV and generates HTML markup for the movie card grid.
+    Writes the result to html_text.txt.
     """
-    with open(csv_file, 'r') as read_file:
+    with open(csv_file, "r", encoding="utf-8") as read_file:
         reader = csv.reader(read_file)
         header = next(reader)
-        if header is not None:
-            html_text = """ """
-            for row in reader:
-                name = ((row[0]).replace(' ', '').replace(':', '').replace('-', ''))
-                html_box = f"""<div class="box">
-                            <div class="movie_box">
-                                <div class="movie_front">
-                                    <img src="{row[6]}" alt="movie poster image">
-                                </div>
-                                <div class="movie_back">
-                                    <h4 class="movie_title">{row[1]}</h4>
-                                    <button class="movie_button"><a 
-                                    href="../PagesHTML/MoviePages/{name}Page.html" 
-                                    target="_blank">See More</a></button>
-                                </div>
-                            </div>
-                        </div>
-                    """
-                html_text += html_box
-            # write the html text to a single file
-            with open('html_text.txt', 'w') as txt_to_write:
-                txt_to_write.write(html_text)
-                txt_to_write.close()
-                read_file.close()
+        if header is None:
+            return
+
+        html_parts = []
+        for row in reader:
+            slug = row[0].replace(" ", "").replace(":", "").replace("-", "")
+            html_parts.append(
+                f'<div class="box">\n'
+                f'    <div class="movie_box">\n'
+                f'        <div class="movie_front">\n'
+                f'            <img src="{row[6]}" alt="movie poster image">\n'
+                f'        </div>\n'
+                f'        <div class="movie_back">\n'
+                f'            <h4 class="movie_title">{row[1]}</h4>\n'
+                f'            <button class="movie_button">\n'
+                f'                <a href="../PagesHTML/MoviePages/{slug}Page.html">See More</a>\n'
+                f'            </button>\n'
+                f'        </div>\n'
+                f'    </div>\n'
+                f'</div>'
+            )
+
+        output_path = os.path.join(os.path.dirname(csv_file), OUTPUT_FILE)
+        with open(output_path, "w", encoding="utf-8") as out_file:
+            out_file.write("\n".join(html_parts))
 
 
-if __name__ == '__main__':
-    read_csv_file("moviesListData.csv")
+if __name__ == "__main__":
+    generate_movie_boxes_html("moviesListData.csv")

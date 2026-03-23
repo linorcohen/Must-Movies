@@ -1,47 +1,58 @@
 import ast
 import csv
-import time
+import os
+
+OUTPUT_DIR = os.path.join("..", "PagesHTML", "MoviePages")
 
 
-def read_csv_files(csv_file_data, csv_file_wallpaper):
+def load_wallpapers(csv_file):
+    """Load wallpaper URLs into a dict keyed by movie identifier."""
+    wallpapers = {}
+    with open(csv_file, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
+        for row in reader:
+            wallpapers[row[0]] = row[1]
+    return wallpapers
+
+
+def generate_movie_pages(csv_file_data, csv_file_wallpaper):
     """
-    This function reads the data from the csv files and creates the html pages for the movies.
-    :param csv_file_data: The csv file containing the data of the movies.
-    :param csv_file_wallpaper: The csv file containing the wallpaper links of the movies.
+    Reads movie data and wallpaper CSVs, then generates individual HTML pages
+    for each movie under PagesHTML/MoviePages/.
     """
-    read_file_data = open(csv_file_data, 'r')
-    read_file_wallpaper = open(csv_file_wallpaper, 'r')
+    wallpapers = load_wallpapers(csv_file_wallpaper)
 
-    reader_data = csv.reader(read_file_data)
-    reader_wallpaper = csv.reader(read_file_wallpaper)
+    with open(csv_file_data, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
 
-    header_data = next(reader_data)
-    header_wallpaper = next(reader_wallpaper)
+        for row in reader:
+            movie_id = row[0]
+            title = row[1]
+            year = row[2]
+            storyline = row[3]
+            genres_list = ast.literal_eval(row[4])
+            trailer_url = row[5]
 
-    if header_data is not None and header_wallpaper is not None:
-        for row_data in reader_data:
-            for row_wallpaper in reader_wallpaper:
-                if row_data[0] == row_wallpaper[0]:
-                    genres = """ """
-                    for genre in ast.literal_eval(row_data[4]):
-                        li_tag = f"""<li class="genre">{genre}</li>"""
-                        genres += li_tag
-                    html_page = f"""
-<!DOCTYPE html>
+            wallpaper_url = wallpapers.get(movie_id, "")
+            genres_html = "".join(
+                f'<li class="genre">{genre}</li>' for genre in genres_list
+            )
+
+            html_page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Must Watch | {row_data[1]}</title>
+    <title>Must Watch | {title}</title>
     <link rel="stylesheet" href="../SecondaryPage.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Poppins&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../../main/headLogo.png"/>
+    <link rel="icon" type="image/png" href="../../main/assets/headLogo.png"/>
 </head>
-<body style="background-image: url('{row_wallpaper[1]}');">
+<body style="background-image: url('{wallpaper_url}');">
 <div class="design_container">
     <nav class="back_nav">
         <ul>
@@ -50,20 +61,19 @@ def read_csv_files(csv_file_data, csv_file_wallpaper):
     </nav>
     <div class="main_container">
         <div class="info_container">
-            <h1 class="movie_title">{row_data[1]}</h1>
+            <h1 class="movie_title">{title}</h1>
             <div class="year_box">
-                <h2>{row_data[2]}</h2>
+                <h2>{year}</h2>
             </div>
-            <p class="movie_storyline">{row_data[3]}</p>
+            <p class="movie_storyline">{storyline}</p>
             <ul class="movie_genres">
-                {genres}
+                {genres_html}
             </ul>
             <div class="trailer_container">
                 <h2 class="trailer_heading">WATCH THE TRAILER</h2>
                 <div class="video_box">
-                    <video width="590" height="321" controls>
-                        <source src="{row_data[5]}"
-                                type="video/mp4">
+                    <video controls>
+                        <source src="{trailer_url}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -73,17 +83,14 @@ def read_csv_files(csv_file_data, csv_file_wallpaper):
 </div>
 </body>
 </html>
-                            """
-                    name = ((row_data[0]).replace(' ', '').replace(':', '').replace('-', ''))
-                    html_file = open(f"../PagesHTML/MoviePages/{name}Page.html","w")
-                    html_file.write(html_page)
-                    time.sleep(1)
-                    html_file.close()
-                    break
-
-    read_file_wallpaper.close()
-    read_file_data.close()
+"""
+            slug = movie_id.replace(" ", "").replace(":", "").replace("-", "")
+            os.makedirs(OUTPUT_DIR, exist_ok=True)
+            filepath = os.path.join(OUTPUT_DIR, f"{slug}Page.html")
+            with open(filepath, "w", encoding="utf-8") as out_file:
+                out_file.write(html_page)
+            print(f"Generated: {filepath}")
 
 
-if __name__ == '__main__':
-    read_csv_files('moviesListData.csv', 'moviesListWallpaper.csv')
+if __name__ == "__main__":
+    generate_movie_pages("moviesListData.csv", "moviesListWallpaper.csv")

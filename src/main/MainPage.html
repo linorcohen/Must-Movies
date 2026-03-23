@@ -15,8 +15,8 @@
     <nav class="nav-header">
         <img src="assets/logo.png" alt="must movies page logo" class="nav-item" id="page_logo">
         <ul>
-            <li class="nav-item" id="about"><a href="#footer_container">ABOUT</a></li>
-            <li class="nav-item" id="contact"><a href="#footer_container">CONTACT</a></li>
+            <li class="nav-item"><a href="#about_section">ABOUT</a></li>
+            <li class="nav-item"><a href="#contact_section">CONTACT</a></li>
         </ul>
     </nav>
 </header>
@@ -30,307 +30,258 @@
         <h4 class="head-item" id="secondary_headline">Presenting you a list of movies you must <br> watch at
             least once
             in your life</h4>
-        <a href="#main_container">
-            <button class="head-item" id="scroll_down_button" type="button">THE LIST</button>
-        </a>
+        <a href="#main_container" id="scroll_down_button">THE LIST</a>
 
     </div>
-    <script>
-        // the script makes the navigation bar hide when scrolling down past 20 pixels,
-        // reappear when scrolling up or when the scroll position is at the very top,
-        // and change its background color based on the scroll position relative to 621 pixels.
-        window.onscroll = scrollShowNav;
-        let prevScrollTop = document.documentElement.scrollTop;
-
-        function scrollShowNav() {
-            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            if (currentScroll > 20) {
-                document.getElementsByTagName("nav")[0].style.top = "-150px";
-            }
-            if (currentScroll <= 20 || prevScrollTop > currentScroll) {
-                document.getElementsByTagName("nav")[0].style.top = "0px";
-            }
-            if (currentScroll < 621) {
-                document.getElementsByTagName("nav")[0].style.backgroundColor = "transparent";
-            }
-            if (currentScroll > 621) {
-                document.getElementsByTagName("nav")[0].style.backgroundColor = "#000000"
-
-            }
-            prevScrollTop = document.documentElement.scrollTop;
-        }
-    </script>
+    <script src="nav-scroll.js"></script>
 </div>
 <div id="main_container" class="main_container">
 
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/JurassicPark.jpg"
+                <img src="../assets/MoviePoster/JurassicPark.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Jurassic Park</h4>
-                <button class="movie_button">
-                    <a href="../PagesHTML/MoviePages/jurassicparkPage.html">See More</a></button>
+                <a href="../PagesHTML/MoviePages/jurassicparkPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/Hobbit.jpg"
+                <img src="../assets/MoviePoster/Hobbit.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">The Hobbit: An Unexpected Journey</h4>
-                <button class="movie_button">
-                    <a href="../PagesHTML/MoviePages/TheHobbitAnUnexpectedJourneyPage.html">See More</a></button>
+                <a href="../PagesHTML/MoviePages/TheHobbitAnUnexpectedJourneyPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/TLTR1.jpg"
+                <img src="../assets/MoviePoster/TLTR1.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">The Lord of the Rings: The Fellowship of the Ring</h4>
-                <button class="movie_button"><a
-                        href="../PagesHTML/MoviePages/TheLordoftheRingsTheFellowshipoftheRingPage.html"
-                        >See More</a></button>
+                <a href="../PagesHTML/MoviePages/TheLordoftheRingsTheFellowshipoftheRingPage.html"
+                   class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/TLTR2.jpg"
+                <img src="../assets/MoviePoster/TLTR2.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">The Lord of the Rings: The Two Towers</h4>
-                <button class="movie_button"><a
-                        href="../PagesHTML/MoviePages/TheLordoftheRingsTheTwoTowersPage.html"
-                        >See More</a></button>
+                <a href="../PagesHTML/MoviePages/TheLordoftheRingsTheTwoTowersPage.html"
+                   class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/TLTR3.jpg"
+                <img src="../assets/MoviePoster/TLTR3.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">The Lord of the Rings: The Return of the King</h4>
-                <button class="movie_button"><a
-                        href="../PagesHTML/MoviePages/TheLordoftheRingsTheReturnoftheKingPage.html"
-                        >See More</a></button>
+                <a href="../PagesHTML/MoviePages/TheLordoftheRingsTheReturnoftheKingPage.html"
+                   class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/BigHero.jpg"
+                <img src="../assets/MoviePoster/BigHero.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Big Hero 6</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/bighero6Page.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/bighero6Page.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/Hitchhikers.jpg"
+                <img src="../assets/MoviePoster/Hitchhikers.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">The Hitchhiker's Guide to the Galaxy</h4>
-                <button class="movie_button"><a
-                        href="../PagesHTML/MoviePages/ahitchhiker'sguidetothegalaxyPage.html"
-                        >See More</a></button>
+                <a href="../PagesHTML/MoviePages/ahitchhiker'sguidetothegalaxyPage.html"
+                   class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/MIB1.jpg"
+                <img src="../assets/MoviePoster/MIB1.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Men in Black</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/meninblackPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/meninblackPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/MIB2.jpg"
+                <img src="../assets/MoviePoster/MIB2.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Men in Black II</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/MeninBlackIIPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/MeninBlackIIPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/MIB3.jpg"
+                <img src="../assets/MoviePoster/MIB3.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Men in Black 3</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/MeninBlack3Page.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/MeninBlack3Page.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/Up.jpg"
+                <img src="../assets/MoviePoster/Up.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Up</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/upPage.html"
-                                                >See More</a>
-                </button>
+                <a href="../PagesHTML/MoviePages/upPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/Aladdin.jpg"
+                <img src="../assets/MoviePoster/Aladdin.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Aladdin</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/aladdinPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/aladdinPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/AvengersEnd.jpg"
+                <img src="../assets/MoviePoster/AvengersEnd.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Avengers: Endgame</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/avengersendgamePage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/avengersendgamePage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/AvengersInf.jpg"
+                <img src="../assets/MoviePoster/AvengersInf.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Avengers: Infinity War</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/avengersinfinitywarPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/avengersinfinitywarPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/Transformers.jpg"
+                <img src="../assets/MoviePoster/Transformers.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Transformers</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/transformersPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/transformersPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/Xmen.jpg"
+                <img src="../assets/MoviePoster/Xmen.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">X-Men Origins: Wolverine</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/XMenOriginsWolverinePage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/XMenOriginsWolverinePage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/americanPsycho.jpg"
+                <img src="../assets/MoviePoster/americanPsycho.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">American Psycho</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/americanpsychoPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/americanpsychoPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/meetTheParents.jpg"
+                <img src="../assets/MoviePoster/meetTheParents.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">Meet the Parents</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/meettheparentsPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/meettheparentsPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/lionKing.jpg"
+                <img src="../assets/MoviePoster/lionKing.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">The Lion King</h4>
-                <button class="movie_button"><a href="../PagesHTML/MoviePages/thelionkingPage.html"
-                                                >See More</a></button>
+                <a href="../PagesHTML/MoviePages/thelionkingPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
     <div class="box">
         <div class="movie_box">
             <div class="movie_front">
-                <img src="/assets/MoviePoster/narnia.jpg"
+                <img src="../assets/MoviePoster/narnia.jpg"
                      alt="movie poster image">
             </div>
             <div class="movie_back">
                 <h4 class="movie_title">The Chronicles of Narnia: The Lion, the Witch and the Wardrobe</h4>
-                <button class="movie_button">
-                    <a href="../PagesHTML/MoviePages/narniaPage.html">See More</a></button>
+                <a href="../PagesHTML/MoviePages/narniaPage.html" class="movie_button">See More</a>
             </div>
         </div>
     </div>
 </div>
-
-</body>
 
 <footer>
     <div id="footer_container">
@@ -345,17 +296,20 @@
             <span class="attribute">Movies data from <a
                     href="https://www.imdb.com/?ref_=nv_home">IMDB</a></span>
         </div>
-        <div class="footer-item">
+        <div class="footer-item" id="about_section">
             <h4 class="footer-heading">ABOUT US</h4>
-            <p class="footer-paragraph">Must Watch Movies is a website built for Avi Lurie <br> in purpose of
-                the discovery of his luck in movies knowledge, <br> and needs to be filled up. </p>
+            <p class="footer-paragraph">Must Watch Movies is a website built for Avi Lurie
+                in purpose of the discovery of his luck in movies knowledge,
+                and needs to be filled up.</p>
         </div>
-        <div class="footer-item">
+        <div class="footer-item" id="contact_section">
             <h4 class="footer-heading">CONTACT</h4>
             <span class="contact-info">Tel-Aviv, Israel</span>
-            <span class="contact-info">laurie@gmail.com</span>
-            <span class="contact-info">+974 54-000-1111</span>
+            <span class="contact-info">contact@example.com</span>
+            <span class="contact-info">+972 00-000-0000</span>
         </div>
     </div>
 </footer>
+
+</body>
 </html>
