@@ -1,9 +1,20 @@
 import styles from "./Hero.module.css";
 
-export function Hero() {
+interface HeroProps {
+  onShowList?: () => void;
+}
+
+export function Hero({ onShowList }: HeroProps) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (onShowList) {
+      e.preventDefault();
+      onShowList();
+    }
+  };
+
   return (
     <section className={styles.hero}>
-      <div className={styles.imageWrap}>
+      <div className={`${styles.imageWrap} heroBackground`}>
         <img
           src="/assets/main/iron_man.jpg"
           alt="Hero banner"
@@ -16,9 +27,9 @@ export function Hero() {
           Presenting you a list of movies you must watch at least once in your
           life
         </p>
-        <a href="#movie-grid" className={styles.cta}>
+        <button onClick={handleClick} className={styles.cta}>
           THE LIST
-        </a>
+        </button>
       </div>
     </section>
   );

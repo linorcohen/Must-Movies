@@ -58,6 +58,7 @@
   letter-spacing: 4px;
   animation: gradually 4s infinite;
   transition: transform var(--transition-normal);
+  cursor: pointer;
 }
 
 .cta:hover {

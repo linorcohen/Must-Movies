@@ -6,7 +6,11 @@ import styles from "./Navbar.module.css";
 const NAV_HIDE_THRESHOLD = 20;
 const NAV_BG_THRESHOLD = 500;
 
-export function Navbar() {
+interface NavbarProps {
+  onLogoClick?: () => void;
+}
+
+export function Navbar({ onLogoClick }: NavbarProps) {
   const [hidden, setHidden] = useState(false);
   const [solid, setSolid] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -24,18 +28,35 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (onLogoClick) {
+      e.preventDefault();
+      onLogoClick();
+    }
+  };
+
   return (
     <>
       <nav
         className={`${styles.nav} ${hidden ? styles.hidden : ""} ${solid ? styles.solid : ""}`}
       >
-        <Link to="/">
-          <img
-            src="/assets/main/logo.png"
-            alt="Must Movies logo"
-            className={styles.logo}
-          />
-        </Link>
+        {onLogoClick ? (
+          <button onClick={handleLogoClick} className={styles.logoButton}>
+            <img
+              src="/assets/main/logo.png"
+              alt="Must Movies logo"
+              className={styles.logo}
+            />
+          </button>
+        ) : (
+          <Link to="/">
+            <img
+              src="/assets/main/logo.png"
+              alt="Must Movies logo"
+              className={styles.logo}
+            />
+          </Link>
+        )}
         <ul className={styles.links}>
           <li>
             <button onClick={() => setAboutOpen(true)} className={styles.navButton}>
