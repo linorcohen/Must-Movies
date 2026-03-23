@@ -11,7 +11,7 @@ export function MovieCard({ movie }: MovieCardProps) {
     <div className={styles.box}>
       <div className={styles.front}>
         <img
-          src={`/assets/MoviePoster/${movie.posterImage}`}
+          src={movie.posterUrl}
           alt={`${movie.title} poster`}
           loading="lazy"
         />

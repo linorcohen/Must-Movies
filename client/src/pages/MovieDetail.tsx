@@ -33,7 +33,7 @@ export function MovieDetail() {
             <span>{movie.year}</span>
           </div>
 
-          <p className={styles.storyline}>{movie.storyline}</p>
+          <p className={styles.storyline}>{movie.synopsis}</p>
 
           <ul className={styles.genres}>
             {movie.genres.map((g) => (
@@ -43,12 +43,12 @@ export function MovieDetail() {
             ))}
           </ul>
 
-          {movie.trailerYoutubeId && (
+          {movie.trailerId && (
             <div className={styles.trailerSection}>
               <h2 className={styles.trailerHeading}>WATCH THE TRAILER</h2>
               <div className={styles.videoBox}>
                 <iframe
-                  src={`https://www.youtube.com/embed/${movie.trailerYoutubeId}?autoplay=0&mute=1`}
+                  src={`https://www.youtube.com/embed/${movie.trailerId}?autoplay=0&mute=1`}
                   title={`${movie.title} trailer`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

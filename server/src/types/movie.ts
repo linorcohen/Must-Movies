@@ -2,9 +2,9 @@ export interface Movie {
   id: string;
   title: string;
   year: number;
-  storyline: string;
+  synopsis: string;
   genres: string[];
-  trailerYoutubeId: string;
-  posterImage: string;
+  posterUrl: string;
   wallpaperUrl: string;
+  trailerId: string;
 }
