@@ -39,13 +39,25 @@
   letter-spacing: 3px;
 }
 
-.links a {
+.links a,
+.navButton {
   text-decoration: none;
   color: var(--color-cream);
   transition: color var(--transition-normal);
 }
 
-.links a:hover {
+.navButton {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.links a:hover,
+.navButton:hover {
   color: var(--color-nav-hover);
 }
 

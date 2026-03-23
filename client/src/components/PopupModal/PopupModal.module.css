@@ -1,0 +1,105 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.8s ease;
+}
+
+.modal {
+  background-color: var(--color-dark);
+  border: 2px solid var(--color-gold);
+  border-radius: 8px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2.5rem;
+  color: var(--color-cream);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-normal), transform var(--transition-normal);
+}
+
+.close:hover {
+  color: var(--color-gold);
+  transform: scale(1.1);
+}
+
+.title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.content {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-cream);
+}
+
+.content p {
+  margin: 0 0 1rem 0;
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 2rem 1.5rem;
+    max-width: 90%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .close {
+    font-size: 2rem;
+    width: 32px;
+    height: 32px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .content {
+    font-size: 0.9rem;
+  }
+}
