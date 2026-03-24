@@ -1,37 +1,108 @@
-# Must Movies Website
+# Must Movies
 
-## Overview
+A curated catalog of must-watch films: browse a responsive grid, open each title for synopsis, genres, trailer, and full-screen wallpaper. Movie data is served from a PostgreSQL database via a small Express API; the UI is a React (Vite) single-page app.
 
-Welcome to the "Must Movies" website – a handpicked collection of must-watch movies for movie enthusiasts and casual viewers alike.  
-Our site presents a selection of films that are essential viewing, each one a masterpiece in its own right.
+## Repository layout
+
+| Directory | Role |
+|-----------|------|
+| `client/` | React + TypeScript + Vite front end |
+| `server/` | Express API, PostgreSQL access, and migration tooling |
 
 ## Features
 
-- **List of Movies:** Each movie on our list is selected for its unique contribution to the world of cinema.  
-  Our list includes a wide range of genres, from action and adventure to comedy, drama, and more.
-- **Detailed Movie Information:** Click on any movie poster to get more details about the film, including plot, cast, and more.
-- **Responsive Design:** Enjoy a seamless experience on any device, thanks to our fully responsive layout.
-- **Interactive Elements:** Engage with our easy-to-navigate interface, designed for a user-friendly experience.
+- **Home** — Hero section and transition into a searchable movie grid.
+- **Detail pages** — Route `/movie/:id` with plot, cast-style metadata (via synopsis and genres), embedded trailer (YouTube by ID), and wallpaper imagery.
+- **Images** — Posters and wallpapers can be stored in the database and exposed at `/api/movies/:id/poster` and `/api/movies/:id/wallpaper`, with sensible caching headers.
+- **Responsive UI** — Layout and components tuned for different screen sizes.
 
-## Technologies Used
-- **HTML:** Structured and semantic markup for the content.
-- **CSS:** Stylish and responsive design for an aesthetically pleasing user interface.
-- **JavaScript:** A little dynamic features for interactive user experience.
+## Tech stack
 
-## Usage
-1. **Navigation Bar:** Easy access to search, about, and contact sections.
-2. **Movie List:** Scroll through our list of movies. Click 'See More' on any movie to discover detailed information.
-3. **Social Media** Integration: Connect with us on Facebook, Instagram, and Twitter through the icons in the footer.
+- **Client:** React 18, React Router, TypeScript, Vite, CSS modules.
+- **Server:** Node.js, Express, `pg` (PostgreSQL), CORS.
+- **Data:** PostgreSQL (`DATABASE_URL` connection string).
 
-## Python Scripts and Their Functions
-These scripts are used to generate the website's content, once.
+## Prerequisites
 
-1. **CSV to HTML Converter:** Reads a CSV file containing movie data and generates HTML boxes for each movie, integrating them into the website's layout.
-2. **HTML Page Generator:** Processes data from CSV files to create dedicated HTML pages for each movie, detailing their specific information.
-3. **IMDb Web Scraper:** This script automates the process of extracting detailed movie information from IMDb pages and stores it in a CSV file.
-4. **Wallpaper Finder:** Searches and save links of movie wallpapers from the web, compiling the data into a CSV file for website integration.
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- A running [PostgreSQL](https://www.postgresql.org/) instance and a database URL
 
-## Setup
-1. Clone the repository.
-2. Open the `src/main/MainPage.html` file in your browser.
-3. Enjoy!
+## Configuration
+
+### Server (`server/.env`)
+
+Create `server/.env` in the server folder:
+
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+PORT=3001
+```
+
+`PORT` is optional; it defaults to `3001`.
+
+### Client (optional)
+
+For **local development**, the Vite dev server proxies `/api` to `http://localhost:3001`, so you usually do not need a client env file.
+
+For **production builds** (or when the API is on another origin), set the API base URL:
+
+```env
+VITE_API_URL=https://your-api.example.com
+```
+
+The client fetches `${VITE_API_URL}/api/movies` and `/api/movies/:id`. If `VITE_API_URL` is unset, requests use a relative `/api/...` path (same origin as the static site).
+
+## Local development
+
+1. **Database** — Create an empty database and note its connection string for `DATABASE_URL`.
+
+2. **Migrate seed data** (from CSV + local poster files under `server/fallback/`):
+
+   ```bash
+   cd server
+   npm install
+   npm run migrate
+   ```
+
+   This applies `server/src/db/schema.sql`, reads `server/fallback/data/` CSVs, loads posters from `server/fallback/MoviePoster/`, downloads wallpapers where URLs are provided, and upserts rows into `movies`.
+
+3. **API:**
+
+   ```bash
+   cd server
+   npm run dev
+   ```
+
+   The server listens on `http://localhost:3001` (or your `PORT`).
+
+4. **Client:**
+
+   ```bash
+   cd client
+   npm install
+   npm run dev
+   ```
+
+   Open the URL Vite prints (default port **5173**). API calls go through the dev proxy to the Express app.
+
+## Production-style run
+
+```bash
+cd server && npm install && npm run build && npm start
+cd client && npm install && npm run build
+```
+
+Serve the contents of `client/dist/` with any static host. Point `VITE_API_URL` at the public API origin if the API is not same-origin.
+
+## API overview
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/api/movies` | All movies, ordered by title |
+| `GET` | `/api/movies/:id` | One movie |
+| `GET` | `/api/movies/:id/poster` | Poster bytes (`Content-Type` from DB) |
+| `GET` | `/api/movies/:id/wallpaper` | Wallpaper bytes |
+
+## License / attribution
+
+Design inspiration is credited in the app footer; movie metadata is attributed to [IMDb](https://www.imdb.com/). See the project footer for links.
