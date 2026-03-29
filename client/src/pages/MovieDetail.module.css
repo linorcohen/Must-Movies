@@ -1,14 +1,25 @@
 .page {
-  min-height: 100vh;
-  background: no-repeat center center fixed;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
   font-family: "Bebas Neue", cursive;
   color: #ffffff;
 }
 
 .overlay {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: rgba(0, 0, 0, 0.6);
-  min-height: 100vh;
   animation: fadeIn 0.8s ease;
 }
 
@@ -45,7 +56,8 @@
 }
 
 .loading {
-  min-height: 100vh;
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;

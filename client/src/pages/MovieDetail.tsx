@@ -7,11 +7,19 @@ export function MovieDetail() {
   const { movie, loading, error } = useMovie(id);
 
   if (loading) {
-    return <div className={styles.loading}>Loading...</div>;
+    return (
+      <div className={styles.page}>
+        <div className={styles.loading}>Loading...</div>
+      </div>
+    );
   }
 
   if (error || !movie) {
-    return <div className={styles.loading}>Movie not found.</div>;
+    return (
+      <div className={styles.page}>
+        <div className={styles.loading}>Movie not found.</div>
+      </div>
+    );
   }
 
   return (

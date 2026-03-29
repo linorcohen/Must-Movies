@@ -4,35 +4,26 @@ import { PopupModal } from "../PopupModal/PopupModal";
 import styles from "./Navbar.module.css";
 
 const NAV_HIDE_THRESHOLD = 20;
-const NAV_BG_THRESHOLD = 500;
 
 interface NavbarProps {
   onLogoClick?: () => void;
-  alwaysSolid?: boolean;
 }
 
-export function Navbar({ onLogoClick, alwaysSolid = false }: NavbarProps) {
+export function Navbar({ onLogoClick }: NavbarProps) {
   const [hidden, setHidden] = useState(false);
-  const [solid, setSolid] = useState(alwaysSolid);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const prevScroll = useRef(0);
 
   useEffect(() => {
-    if (alwaysSolid) {
-      setSolid(true);
-      return;
-    }
-    
     function onScroll() {
       const current = window.scrollY;
       setHidden(current > NAV_HIDE_THRESHOLD && current > prevScroll.current);
-      setSolid(current > NAV_BG_THRESHOLD);
       prevScroll.current = current;
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [alwaysSolid]);
+  }, []);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (onLogoClick) {
@@ -43,9 +34,7 @@ export function Navbar({ onLogoClick, alwaysSolid = false }: NavbarProps) {
 
   return (
     <>
-      <nav
-        className={`${styles.nav} ${hidden ? styles.hidden : ""} ${solid ? styles.solid : ""}`}
-      >
+      <nav className={`${styles.nav} ${hidden ? styles.hidden : ""}`}>
         {onLogoClick ? (
           <button onClick={handleLogoClick} className={styles.logoButton}>
             <img

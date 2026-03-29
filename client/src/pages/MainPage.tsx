@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navbar } from "../components/Navbar/Navbar";
 import { Hero } from "../components/Hero/Hero";
 import { MovieGrid } from "../components/MovieGrid/MovieGrid";
@@ -23,22 +23,9 @@ export function MainPage() {
     setTimeout(() => setIsTransitioning(false), 1000);
   };
 
-  // Disable scroll during transition
-  useEffect(() => {
-    if (isTransitioning) {
-      document.body.classList.add(styles.noScroll);
-    } else {
-      document.body.classList.remove(styles.noScroll);
-    }
-    return () => document.body.classList.remove(styles.noScroll);
-  }, [isTransitioning]);
-
   return (
-    <>
-      <Navbar 
-        onLogoClick={showGrid ? handleBackToHero : undefined}
-        alwaysSolid={showGrid}
-      />
+    <div className={styles.pageRoot}>
+      <Navbar onLogoClick={showGrid ? handleBackToHero : undefined} />
       <div className={styles.container}>
         <div className={styles.viewContainer}>
           {/* Hero View */}
@@ -62,6 +49,6 @@ export function MainPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

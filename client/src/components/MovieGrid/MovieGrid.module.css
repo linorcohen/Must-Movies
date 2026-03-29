@@ -1,5 +1,12 @@
 .netflixContainer {
-  min-height: 100vh;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* Offset content below fixed nav; background paints in padding so dark layer shows under transparent nav */
+  padding-top: var(--nav-height);
   background-image: url("/assets/main/iron_man.jpg");
   background-size: cover;
   background-position: center;
@@ -21,6 +28,7 @@
 .filterBar {
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   padding: 2rem 4% 1rem;
@@ -53,16 +61,22 @@
 .carouselContainer {
   position: relative;
   z-index: 1;
+  flex: 1;
+  min-height: 0;
   padding: 2rem 0 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 70vh;
+  overflow: hidden;
 }
 
 .singleRow {
   width: 100%;
+  max-height: 100%;
   padding: 0 4%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .mainTitle {
@@ -77,6 +91,10 @@
 
 .rowWrapper {
   position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
 }
 
 .movieRow {
@@ -187,9 +205,6 @@
     padding: 1.5rem 2% 1rem;
   }
 
-  .carouselContainer {
-    min-height: 60vh;
-  }
 }
 
 @media (max-width: 480px) {
