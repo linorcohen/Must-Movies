@@ -2,6 +2,9 @@
 
 A curated catalog of must-watch films: browse a responsive grid, open each title for synopsis, genres, trailer, and full-screen wallpaper. Movie data is served from a PostgreSQL database via a small Express API; the UI is a React (Vite) single-page app.
 
+<img width="1911" height="906" alt="image" src="https://github.com/user-attachments/assets/e5c80e4f-4ea1-4605-97a6-4e3c967ade81" />
+
+
 ## Repository layout
 
 | Directory | Role |
