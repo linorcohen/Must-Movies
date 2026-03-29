@@ -27,11 +27,29 @@
 
 .filterBar {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   flex-shrink: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   padding: 2rem 4% 1rem;
+}
+
+.filterControlsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 560px;
+  justify-content: center;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  max-width: 500px;
 }
 
 .searchInput {
@@ -45,7 +63,157 @@
   background: rgba(17, 17, 17, 0.8);
   color: var(--color-cream);
   width: 100%;
-  max-width: 500px;
+}
+
+.filterToggle {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-gold);
+  border-radius: 6px;
+  background: rgba(17, 17, 17, 0.8);
+  color: var(--color-gold);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-normal),
+    background var(--transition-normal),
+    color var(--transition-normal);
+}
+
+.filterToggle:hover,
+.filterToggle:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  outline: none;
+}
+
+.filterToggleActive {
+  border-color: var(--color-accent);
+  background: rgba(0, 180, 216, 0.15);
+  color: var(--color-accent);
+}
+
+.filterIcon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.35rem 0;
+  list-style: none;
+  z-index: 30;
+  max-height: min(320px, 45vh);
+  overflow-y: auto;
+  border-radius: 6px;
+  border: 2px solid var(--color-gold);
+  background: rgba(17, 17, 17, 0.97);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.suggestionItem:hover,
+.suggestionItem:focus-visible {
+  background: rgba(242, 204, 143, 0.12);
+  outline: none;
+}
+
+.suggestionThumb {
+  flex-shrink: 0;
+  width: 36px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(242, 204, 143, 0.35);
+}
+
+.suggestionText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.suggestionTitle {
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.suggestionMeta {
+  font-size: 0.8rem;
+  color: var(--color-sand);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filterPanel {
+  width: 100%;
+  max-width: 560px;
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+  border: 2px solid var(--color-gold);
+  background: rgba(17, 17, 17, 0.95);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: flex-end;
+}
+
+.filterField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 140px;
+  flex: 1;
+}
+
+.filterLabel {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-sand);
+}
+
+.filterSelect {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-gold);
+  background: rgba(12, 12, 12, 0.95);
+  color: var(--color-cream);
+  cursor: pointer;
+  outline: none;
+}
+
+.filterSelect:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.25);
 }
 
 .searchInput::placeholder {
@@ -106,6 +274,9 @@
   padding: 0.5rem 0 1rem;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
 }
 
 .movieRow::-webkit-scrollbar {
@@ -118,6 +289,14 @@
   transition: transform var(--transition-normal);
 }
 
+@media (max-width: 1100px) {
+  .movieCard {
+    width: calc((100vw - 7rem) / 3);
+    min-width: 150px;
+    max-width: 240px;
+  }
+}
+
 .movieCard:hover {
   transform: scale(1.05);
   z-index: 2;
@@ -127,7 +306,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(17, 17, 17, 0.9);
+  background: rgba(17, 17, 17, 0.75);
   border: 2px solid var(--color-gold);
   color: var(--color-cream);
   font-size: 3rem;
@@ -135,16 +314,29 @@
   height: 120px;
   cursor: pointer;
   z-index: 3;
-  transition: background var(--transition-normal), border-color var(--transition-normal);
+  opacity: 0.35;
+  transition:
+    opacity var(--transition-normal),
+    background var(--transition-normal),
+    border-color var(--transition-normal);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
 }
 
-.scrollButton:hover {
-  background: rgba(17, 17, 17, 1);
+.scrollButton:hover,
+.scrollButton:focus-visible {
+  opacity: 1;
+  transform: translateY(-50%);
+  background: rgba(17, 17, 17, 0.95);
   border-color: var(--color-accent);
+}
+
+@media (hover: none) {
+  .scrollButton {
+    opacity: 0.72;
+  }
 }
 
 .scrollButtonLeft {
@@ -188,7 +380,9 @@
   }
 
   .movieCard {
-    width: 180px;
+    width: calc((100vw - 5rem) / 2.15);
+    min-width: 140px;
+    max-width: 220px;
   }
 
   .movieRow {
@@ -209,7 +403,23 @@
 
 @media (max-width: 480px) {
   .movieCard {
-    width: 140px;
+    width: calc((100vw - 3.25rem) / 2);
+    min-width: 130px;
+    max-width: 200px;
+  }
+
+  .filterPanel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterField {
+    min-width: unset;
+  }
+
+  .filterToggle {
+    width: 44px;
+    height: 44px;
   }
 
   .mainTitle {

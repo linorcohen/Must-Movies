@@ -8,20 +8,21 @@ interface MovieCardProps {
 
 export function MovieCard({ movie }: MovieCardProps) {
   return (
-    <div className={styles.box}>
+    <Link
+      to={`/movie/${movie.id}`}
+      className={styles.box}
+      aria-label={`Open ${movie.title}`}
+    >
       <div className={styles.front}>
         <img
           src={movie.posterUrl}
-          alt={`${movie.title} poster`}
+          alt=""
           loading="lazy"
         />
       </div>
       <div className={styles.back}>
         <h4 className={styles.title}>{movie.title}</h4>
-        <Link to={`/movie/${movie.id}`} className={styles.button}>
-          See More
-        </Link>
       </div>
-    </div>
+    </Link>
   );
 }

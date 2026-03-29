@@ -37,19 +37,22 @@ export function MovieDetail() {
         <div className={styles.content}>
           <h1 className={styles.title}>{movie.title}</h1>
 
-          <div className={styles.yearBox}>
-            <span>{movie.year}</span>
+          <div className={styles.metaRow}>
+            <div className={styles.yearBox}>
+              <span>{movie.year}</span>
+            </div>
+            <ul className={styles.genres}>
+              {movie.genres.map((g) => (
+                <li key={g} className={styles.genre}>
+                  {g}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <p className={styles.storyline}>{movie.synopsis}</p>
-
-          <ul className={styles.genres}>
-            {movie.genres.map((g) => (
-              <li key={g} className={styles.genre}>
-                {g}
-              </li>
-            ))}
-          </ul>
+          <p className={styles.storyline} title={movie.synopsis}>
+            {movie.synopsis}
+          </p>
 
           {movie.trailerId && (
             <div className={styles.trailerSection}>
