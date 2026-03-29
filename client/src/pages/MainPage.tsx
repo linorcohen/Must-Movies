@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar/Navbar";
 import { Hero } from "../components/Hero/Hero";
 import { MovieGrid } from "../components/MovieGrid/MovieGrid";
-import { Footer } from "../components/Footer/Footer";
 import { useMovies } from "../hooks/useMovies";
 import styles from "./MainPage.module.css";
 
@@ -60,7 +59,6 @@ export function MainPage() {
             {loading && <p className={styles.statusMessage}>Loading movies...</p>}
             {error && <p className={`${styles.statusMessage} ${styles.errorMessage}`}>Error: {error}</p>}
             {!loading && !error && <MovieGrid movies={movies} />}
-            {showGrid && <Footer />}
           </div>
         </div>
       </div>
